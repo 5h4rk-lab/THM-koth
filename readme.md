@@ -1,4 +1,4 @@
-# food-Koth.
+# machine name for KOTH: food(linux)
 First,do a basic nmap scan and then you would find some deatiles about the IP address.<br/>
 from that you can get the first flag and a user by the ssh credentials with the help of mysql database.<br/>
 after getting the shell now its time to get the root.<br/>
