@@ -1,8 +1,69 @@
 # machine name for KOTH: food(linux)
 First,do a basic nmap scan and then you would find details about the IP address.<br/>
+#### Nmap 7.80 scan initiated Thu Jun 11 15:19:27 2020 as: nmap -sC -sV -oN nmap.txt 10.10.77.101
+Nmap scan report for 10.10.77.101<br/>
+Host is up (0.21s latency).<br/>
+Not shown: 999 closed ports <br/>
+PORT     STATE SERVICE VERSION <br/>
+9999/tcp open  abyss? <br/>
+| fingerprint-strings: <br/>
+|   FourOhFourRequest: <br/>
+|     HTTP/1.0 200 OK <br/>
+|     Date: Thu, 11 Jun 2020 09:50:12 GMT <br/>
+|     Content-Length: 4 <br/>
+|     Content-Type: text/plain; charset=utf-8 <br/>
+|     king <br/>
+|   GenericLines, Help, Kerberos, LDAPSearchReq, LPDString, RTSPRequest, SIPOptions, SSLSessionReq, TLSSessionReq, TerminalServerCookie: <br/>
+|     HTTP/1.1 400 Bad Request <br/>
+|     Content-Type: text/plain; charset=utf-8 <br/>
+|     Connection: close <br/>
+|     Request <br/>
+|   GetRequest, HTTPOptions: <br/>
+|     HTTP/1.0 200 OK <br/>
+|     Date: Thu, 11 Jun 2020 09:50:11 GMT <br/>
+|     Content-Length: 4 <br/>
+|     Content-Type: text/plain; charset=utf-8 <br/>
+|_    king <br/>
+1 service unrecognized despite returning data. If you know the service/version, please submit the following fingerprint at https://nmap.org/cgi-bin/submit.cgi?new-service : <br/>
+SF-Port9999-TCP:V=7.80%I=7%D=6/11%Time=5EE1FE52%P=x86_64-pc-linux-gnu%r(Ge <br/>
+SF:tRequest,78,"HTTP/1\.0\x20200\x20OK\r\nDate:\x20Thu,\x2011\x20Jun\x2020 <br/>
+SF:20\x2009:50:11\x20GMT\r\nContent-Length:\x204\r\nContent-Type:\x20text/ <br/> 
+SF:plain;\x20charset=utf-8\r\n\r\nking")%r(HTTPOptions,78,"HTTP/1\.0\x2020 <br/>
+SF:0\x20OK\r\nDate:\x20Thu,\x2011\x20Jun\x202020\x2009:50:11\x20GMT\r\nCon <br/>
+SF:tent-Length:\x204\r\nContent-Type:\x20text/plain;\x20charset=utf-8\r\n\ <br/>
+SF:r\nking")%r(FourOhFourRequest,78,"HTTP/1\.0\x20200\x20OK\r\nDate:\x20Th <br/>
+SF:u,\x2011\x20Jun\x202020\x2009:50:12\x20GMT\r\nContent-Length:\x204\r\nC <br/>
+SF:ontent-Type:\x20text/plain;\x20charset=utf-8\r\n\r\nking")%r(GenericLin <br/>
+SF:es,67,"HTTP/1\.1\x20400\x20Bad\x20Request\r\nContent-Type:\x20text/plai <br/>
+SF:n;\x20charset=utf-8\r\nConnection:\x20close\r\n\r\n400\x20Bad\x20Reques <br/>
+SF:t")%r(RTSPRequest,67,"HTTP/1\.1\x20400\x20Bad\x20Request\r\nContent-Typ <br/>
+SF:e:\x20text/plain;\x20charset=utf-8\r\nConnection:\x20close\r\n\r\n400\x <br/>
+SF:20Bad\x20Request")%r(Help,67,"HTTP/1\.1\x20400\x20Bad\x20Request\r\nCon <br/>
+SF:tent-Type:\x20text/plain;\x20charset=utf-8\r\nConnection:\x20close\r\n\ <br/>
+SF:r\n400\x20Bad\x20Request")%r(SSLSessionReq,67,"HTTP/1\.1\x20400\x20Bad\ <br/>
+SF:x20Request\r\nContent-Type:\x20text/plain;\x20charset=utf-8\r\nConnecti <br/>
+SF:on:\x20close\r\n\r\n400\x20Bad\x20Request")%r(TerminalServerCookie,67," <br/>
+SF:HTTP/1\.1\x20400\x20Bad\x20Request\r\nContent-Type:\x20text/plain;\x20c <br/>
+SF:harset=utf-8\r\nConnection:\x20close\r\n\r\n400\x20Bad\x20Request")%r(T <br/>
+SF:LSSessionReq,67,"HTTP/1\.1\x20400\x20Bad\x20Request\r\nContent-Type:\x2 <br/>
+SF:0text/plain;\x20charset=utf-8\r\nConnection:\x20close\r\n\r\n400\x20Bad <br/>
+SF:\x20Request")%r(Kerberos,67,"HTTP/1\.1\x20400\x20Bad\x20Request\r\nCont <br/>
+SF:ent-Type:\x20text/plain;\x20charset=utf-8\r\nConnection:\x20close\r\n\r <br/>
+SF:\n400\x20Bad\x20Request")%r(LPDString,67,"HTTP/1\.1\x20400\x20Bad\x20Re <br/>
+SF:quest\r\nContent-Type:\x20text/plain;\x20charset=utf-8\r\nConnection:\x <br/>
+SF:20close\r\n\r\n400\x20Bad\x20Request")%r(LDAPSearchReq,67,"HTTP/1\.1\x2 <br/>
+SF:0400\x20Bad\x20Request\r\nContent-Type:\x20text/plain;\x20charset=utf-8 <br/>
+SF:\r\nConnection:\x20close\r\n\r\n400\x20Bad\x20Request")%r(SIPOptions,67 <br/>
+SF:,"HTTP/1\.1\x20400\x20Bad\x20Request\r\nContent-Type:\x20text/plain;\x2 <br/>
+SF:0charset=utf-8\r\nConnection:\x20close\r\n\r\n400\x20Bad\x20Request"); <br/>
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ . <br/>
+
+
 from the scan we got to know that there is a sql database running on.<br/>
 with the help of command
-"mysql -u root -h <ip> -p"  login to sql database with pass root <br/>
+"mysql -u root -h <ip> -p"  
+login to sql database with pass root <br/>
 with the help of mysql database explore the tables.that will get the first flag and a user by the ssh credentials <br/>
 after getting the shell now its time to get the root.<br/>
 so use find command and search for the vulnerbility.<br/>
