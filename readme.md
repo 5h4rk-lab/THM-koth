@@ -58,6 +58,8 @@ SF:,"HTTP/1\.1\x20400\x20Bad\x20Request\r\nContent-Type:\x20text/plain;\x2 <br/>
 SF:0charset=utf-8\r\nConnection:\x20close\r\n\r\n400\x20Bad\x20Request"); <br/>
 
 Service detection performed. Please report any incorrect results at https://nmap.org/submit/ . <br/>
+<hr>
+<hr>
 
 
 from the scan we got to know that there is a sql database running on.<br/>
@@ -186,7 +188,7 @@ Host script results: <br/>
 
 Service detection performed. Please report any incorrect results at https://nmap.org/submit/ . <br/>
 
-###### Nmap done at Thu Jun 11 14:21:43 2020 -- 1 IP address (1 host up) scanned in 136.60 seconds
+<hr>
 
 From basic nmap scan we get to know that smbclient is open so get it into the smb client and get the flag and <br/>
 alert txt<br>
